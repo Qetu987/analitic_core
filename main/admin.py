@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Heading, Category, Brand, Item_model
+from .models import Heading, Category, Brand, Item_model, Type
 
 
 @admin.register(Heading)
@@ -18,11 +18,19 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ['id']
     
 
-@admin.register(Brand)
-class BrandAdmin(admin.ModelAdmin):
+@admin.register(Type)
+class TypeAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'category', 'name_pattern']
     list_display_links = ['id', 'title', 'category', 'name_pattern']
     list_search = ['id', 'title', 'category', 'name_pattern']
+    list_filter = ['id']
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'type', 'name_pattern']
+    list_display_links = ['id', 'title', 'type', 'name_pattern']
+    list_search = ['id', 'title', 'type', 'name_pattern']
     list_filter = ['id']
 
 

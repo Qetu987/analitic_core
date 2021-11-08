@@ -18,8 +18,17 @@ class Category(models.Model):
         return "%s_%s" % (self.id, self.title)
 
 
+class Type(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=100)
+    name_pattern = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return "%s_%s" % (self.id, self.title)
+
+
 class Brand(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    type = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     name_pattern = models.CharField(max_length=100, null=True)
 
