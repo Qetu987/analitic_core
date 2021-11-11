@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'olx',
     'main',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
