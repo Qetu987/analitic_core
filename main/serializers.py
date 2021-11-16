@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Heading, Category, Type, Brand, Item_model
+from olx.models import Olx_items
 
 
 class HeadingListSerializer(serializers.ModelSerializer):
@@ -35,3 +36,10 @@ class Item_modelListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item_model
         fields = ('id', 'title', 'name_pattern')
+
+
+class OlxSetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Olx_items
+        fields = '__all__'
