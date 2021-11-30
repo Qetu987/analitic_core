@@ -2,11 +2,24 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Heading, Category, Type, Brand, Item_model
+from .models import (
+    Heading, 
+    Category, 
+    Type, 
+    Brand, 
+    Item_model
+    )
+
 from olx.models import Olx_items
-from .serializers import HeadingListSerializer, CategoryListSerializer, \
-    TypeListSerializer, BrandListSerializer, Item_modelListSerializer, \
-    OlxSetSerializer
+
+from .serializers import (
+    HeadingListSerializer, 
+    CategoryListSerializer,
+    TypeListSerializer, 
+    BrandListSerializer,
+    Item_modelListSerializer,
+    OlxSetSerializer,
+    )
 
 
 class HeadingListView(APIView):

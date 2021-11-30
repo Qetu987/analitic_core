@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'olx',
     'main',
+    'bot_office',
     'rest_framework',
 ]
 
