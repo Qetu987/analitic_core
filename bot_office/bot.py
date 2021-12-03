@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 class Parser_bot:
     def get_html(self):
         r = requests.get(self.URL)
@@ -18,7 +19,6 @@ class Parser_bot:
 class Olx_Parser(Parser_bot):
     def __init__(self, *args, **kwargs):
         keys = [kwargs['brand'].name_pattern, kwargs['item_model'].name_pattern]
-        print(keys)
         self.keyword = '-'.join(keys)
         heading = kwargs['heading'].name_pattern
         category = kwargs['category'].name_pattern
@@ -36,7 +36,20 @@ class Olx_Parser(Parser_bot):
         top_taple = tables[1]
         return top_taple.findAll('tr', class_="wrap")
 
-    
+
+    def first_three(self):
+        items = self.get_items()[:3]
+        result = []
+        for item in items:
+            curent_result = {}
+            title_block = item.find('td', class_='title-cell')
+            curent_result['title'] = title_block.find('strong').text
+            curent_result['url'] = title_block.find('a', class_='link')['href']
+            curent_result['cost'] = item.find('p', class_='price').find('strong').text
+            result.append(curent_result)
+        return result
+
+
     def list_price(self):
         items = self.get_items()
         prices = []

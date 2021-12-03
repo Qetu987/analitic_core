@@ -36,11 +36,19 @@ class Olx_items(models.Model):
             id=self.id
             )
         self.total = bot_result.average()
+        examples = bot_result.first_three()
+        for example in examples:
+            obj = Olx_examples()
+            obj.parent = self
+            obj.title = example['title']
+            obj.url = example['url']
+            obj.cost = example['cost']
+            obj.save()
 
         super(Olx_items, self).save(*args, **kwargs)
 
 
-class Olx_examples(models.Mode):
+class Olx_examples(models.Model):
     parent = models.ForeignKey(Olx_items, on_delete=models.CASCADE)
     url = models.TextField()
     title = models.CharField(max_length=300)
