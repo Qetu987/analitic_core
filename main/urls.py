@@ -1,6 +1,13 @@
 from django.urls import path
-from .views import HeadingListView, CategoryListView, TypeListView, \
-    BrandListView, Item_modelListView, OlxSetView
+from .views import (
+    HeadingListView,
+    CategoryListView,
+    TypeListView,
+    BrandListView,
+    Item_modelListView,
+    OlxSetView,
+    OlxResultView,
+)
 
 
 urlpatterns = [
@@ -10,4 +17,5 @@ urlpatterns = [
     path('brand/<int:item>', BrandListView.as_view()),
     path('item/<int:item>', Item_modelListView.as_view()),
     path('olx/', OlxSetView.as_view()),
+    path('result/<int:item>', OlxResultView.as_view()),
 ]

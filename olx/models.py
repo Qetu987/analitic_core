@@ -49,7 +49,7 @@ class Olx_items(models.Model):
 
 
 class Olx_examples(models.Model):
-    parent = models.ForeignKey(Olx_items, on_delete=models.CASCADE)
+    parent = models.ForeignKey(Olx_items, on_delete=models.CASCADE, related_name='childrens')
     url = models.TextField()
     title = models.CharField(max_length=300)
     cost = models.CharField(max_length=100)

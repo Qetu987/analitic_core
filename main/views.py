@@ -19,6 +19,7 @@ from .serializers import (
     BrandListSerializer,
     Item_modelListSerializer,
     OlxSetSerializer,
+    OlxResultSerializer,
     )
 
 
@@ -64,3 +65,10 @@ class OlxSetView(APIView):
             olx.save()
             return Response(status=201)
         return Response(status=400)
+
+
+class OlxResultView(APIView):
+    def get(self, request, item):
+        item_model = Olx_items.objects.get(id=item)
+        serializer = OlxResultSerializer(item_model)
+        return Response(serializer.data)

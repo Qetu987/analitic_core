@@ -13,7 +13,7 @@ class Parser_bot:
         mid = 0
         for price in prices:
             mid += price
-        return mid / len(prices)
+        return round(mid / len(prices), 2)
 
 
 class Olx_Parser(Parser_bot):
